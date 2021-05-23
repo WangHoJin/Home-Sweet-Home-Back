@@ -42,8 +42,12 @@
 		where dong=#{dong}
 	</select>
 	
-	<select id="getInterestArea" parameterType="String" resultType="string">
-		select d.dong
+	<delete id="deleteInterestArea" parameterType="InterestAreaDto">
+		delete from areaofinterest
+		where userid=#{userid} and dongcode=#{dongcode}
+	</delete>
+	<select id="getInterestArea" parameterType="String" resultType="InterestAreaDto">
+		select a.userid,a.dongcode,d.dong,d.city,d.gugun
 		from areaofinterest a,dongcode d
 		where a.userid=#{userid}
 		and a.dongcode=d.dongcode

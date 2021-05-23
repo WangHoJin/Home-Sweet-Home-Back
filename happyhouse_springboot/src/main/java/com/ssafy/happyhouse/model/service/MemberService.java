@@ -26,7 +26,9 @@ public interface MemberService {
 //	관심지역추가
 	String selInterestArea(String dong);
 	
-	List<String> getInterestArea(String userid);
+	List<InterestAreaDto> getInterestArea(String userid);
+	
+	boolean delteteInterestArea(InterestAreaDto interestAreaDto);
 
 	boolean addInterestArea(InterestAreaDto interestAreaDto);
 }

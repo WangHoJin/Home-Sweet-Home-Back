@@ -63,9 +63,16 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public List<String> getInterestArea(String userid) {
+	public List<InterestAreaDto> getInterestArea(String userid) {
 		
 		return session.getMapper(MemberDao.class).getInterestArea(userid);
 	}
+
+	@Override
+	public boolean delteteInterestArea(InterestAreaDto interestAreaDto) {
+		
+		return session.getMapper(MemberDao.class).deleteInterestArea(interestAreaDto)==1;
+	}
+	
 
 }

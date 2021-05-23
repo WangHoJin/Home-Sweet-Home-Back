@@ -26,7 +26,9 @@ public interface MemberDao {
 //	관심지역추가
 	String selInterestArea(String dong);
 	
-	List<String> getInterestArea(String userid);
+	List<InterestAreaDto> getInterestArea(String userid);
 	
 	int addInterestArea(InterestAreaDto interestAreaDto);
+	
+	int deleteInterestArea(InterestAreaDto interestAreaDto);
 }

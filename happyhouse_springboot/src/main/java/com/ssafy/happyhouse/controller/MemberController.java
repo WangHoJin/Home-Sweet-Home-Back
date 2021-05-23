@@ -61,10 +61,18 @@ public class MemberController extends HttpServlet {
 	}
 	
 	@RequestMapping(value="/getareainterest/{userid}",method=RequestMethod.GET)
-	public List<String> getAreaInterest(@PathVariable("userid") String userid){
-		List<String> a=memberService.getInterestArea(userid);
-		System.out.println(a.toString());
-		return a;
+	public List<InterestAreaDto> getAreaInterest(@PathVariable("userid") String userid){
+		return memberService.getInterestArea(userid);
+	}
+	
+	@RequestMapping(value="/deleteinterest/{userid}/{dongcode}",method=RequestMethod.DELETE)
+	public ResponseEntity<String> deleteInterest(@PathVariable("userid") String userid,@PathVariable("dongcode") String dongcode){
+		InterestAreaDto interestAreaDto=new InterestAreaDto(userid,dongcode);
+		System.out.println(userid+" "+dongcode);
+		if(memberService.delteteInterestArea(interestAreaDto)) {
+			return new ResponseEntity<String>(SUCCESS,HttpStatus.OK);
+		}
+		return new ResponseEntity<String>(FAIL,HttpStatus.NO_CONTENT);
 	}
 		
 	@RequestMapping(value = "/addinterest", method = RequestMethod.POST,headers = { "Content-type=application/json" })
