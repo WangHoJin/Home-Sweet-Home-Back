@@ -65,8 +65,11 @@ public class HouseSearchServiceImpl implements HouseSearchService {
 	}
 	
 	@Override
-	public List<HouseDealDto> getDealAptInDong(String dong) throws Exception {
-		return sqlSession.getMapper(HouseSearchDao.class).getDealAptInDong(dong);
+	public List<HouseDealDto> getDealAptInDong(String dong, String aptName) throws Exception {
+		HouseDealDto houseDealDto = new HouseDealDto();
+		houseDealDto.setDong(dong);
+		houseDealDto.setAptName(aptName);
+		return sqlSession.getMapper(HouseSearchDao.class).getDealAptInDong(houseDealDto);
 	}
 
 	@Override

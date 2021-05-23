@@ -22,7 +22,7 @@ public interface HouseSearchService {
 
 	List<HouseInfoDto> getAptInDong(String dong) throws Exception;
 	
-	List<HouseDealDto> getDealAptInDong(String dong) throws Exception;
+	List<HouseDealDto> getDealAptInDong(String dong,String aptName) throws Exception;
 
 	List<HouseInfoDto> getAll() throws Exception;
 	

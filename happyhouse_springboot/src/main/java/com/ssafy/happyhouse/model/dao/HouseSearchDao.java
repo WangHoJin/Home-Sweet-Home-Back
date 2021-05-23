@@ -24,7 +24,7 @@ public interface HouseSearchDao {
 
 	List<HouseInfoDto> getAptInDong(String dong) throws Exception;
 	
-	List<HouseDealDto> getDealAptInDong(String dong) throws Exception;
+	List<HouseDealDto> getDealAptInDong(HouseDealDto houseDealDto) throws Exception;
 
 	List<HouseInfoDto> getAll() throws Exception;
 	

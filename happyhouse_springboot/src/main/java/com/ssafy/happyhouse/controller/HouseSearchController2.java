@@ -97,9 +97,9 @@ public class HouseSearchController2 {
 		}
 	}
 	
-	@GetMapping(value = "/housedeal/{sido}/{gugun}/{dong}")
-	public ResponseEntity<List<HouseDealDto>> getDealAptInDong(@PathVariable("dong") String dong) throws Exception {
-		List<HouseDealDto> list = hSer.getDealAptInDong(dong);
+	@GetMapping(value = "/housedeal/{dong}/{aptName}")
+	public ResponseEntity<List<HouseDealDto>> getDealAptInDong(@PathVariable("dong") String dong,@PathVariable("aptName") String aptName) throws Exception {
+		List<HouseDealDto> list = hSer.getDealAptInDong(dong, aptName);
 		if(list != null && !list.isEmpty()) {
 			return new ResponseEntity<List<HouseDealDto>>(list, HttpStatus.OK);
 		} else {

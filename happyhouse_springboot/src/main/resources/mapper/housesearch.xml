@@ -38,10 +38,10 @@
 		order by AptName
 	</select>
 	
-	<select id="getDealAptInDong" parameterType="string" resultType="HouseDealDto">
+	<select id="getDealAptInDong" parameterType="HouseInfoDto" resultType="HouseDealDto">
 		select *
 		from housedeal
-		where dong=#{dong}
+		where dong=#{dong} and AptName=#{aptName}
 		order by AptName
 	</select>
 	
