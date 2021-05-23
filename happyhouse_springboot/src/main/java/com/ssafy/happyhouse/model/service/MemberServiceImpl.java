@@ -1,5 +1,6 @@
 package com.ssafy.happyhouse.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -59,6 +60,12 @@ public class MemberServiceImpl implements MemberService{
 	public String selInterestArea(String dong) {
 	
 		return session.getMapper(MemberDao.class).selInterestArea(dong);
+	}
+
+	@Override
+	public List<String> getInterestArea(String userid) {
+		
+		return session.getMapper(MemberDao.class).getInterestArea(userid);
 	}
 
 }

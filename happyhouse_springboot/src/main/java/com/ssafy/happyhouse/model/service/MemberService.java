@@ -1,5 +1,6 @@
 package com.ssafy.happyhouse.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.ssafy.happyhouse.model.InterestAreaDto;
@@ -24,6 +25,8 @@ public interface MemberService {
 	
 //	관심지역추가
 	String selInterestArea(String dong);
+	
+	List<String> getInterestArea(String userid);
 
 	boolean addInterestArea(InterestAreaDto interestAreaDto);
 }

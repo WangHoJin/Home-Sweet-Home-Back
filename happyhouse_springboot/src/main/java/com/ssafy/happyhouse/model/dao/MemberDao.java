@@ -1,6 +1,7 @@
 package com.ssafy.happyhouse.model.dao;
 
 
+import java.util.List;
 import java.util.Map;
 
 import com.ssafy.happyhouse.model.InterestAreaDto;
@@ -24,6 +25,8 @@ public interface MemberDao {
 
 //	관심지역추가
 	String selInterestArea(String dong);
+	
+	List<String> getInterestArea(String userid);
 	
 	int addInterestArea(InterestAreaDto interestAreaDto);
 }

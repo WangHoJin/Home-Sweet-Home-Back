@@ -49,7 +49,7 @@ public class MemberController extends HttpServlet {
 	@Autowired
 	private MemberService memberService;
 
-	@RequestMapping(value = "/mvsearch", method = RequestMethod.GET)
+	@RequestMapping(value = "/mvsearch", method = RequestMethod.GET)	
 	public String home(Locale locale, Model model) {
 		return "housesearch";
 	}
@@ -60,6 +60,13 @@ public class MemberController extends HttpServlet {
 		return memberService.getMember(userid);
 	}
 	
+	@RequestMapping(value="/getareainterest/{userid}",method=RequestMethod.GET)
+	public List<String> getAreaInterest(@PathVariable("userid") String userid){
+		List<String> a=memberService.getInterestArea(userid);
+		System.out.println(a.toString());
+		return a;
+	}
+		
 	@RequestMapping(value = "/addinterest", method = RequestMethod.POST,headers = { "Content-type=application/json" })
     public ResponseEntity<String> addInterestArea(@RequestBody Map<String, String> map) {
         String userid=map.get("userid");
@@ -112,9 +119,11 @@ public class MemberController extends HttpServlet {
 //			session 설정
 			HttpSession session = req.getSession();
 			session.setAttribute("userinfo", memberDto);
+			System.out.println("성공");
 			return new ResponseEntity<String>(SUCCESS,HttpStatus.OK);
 		} else { // 실패
 			mv.addObject("msg", "가입하지 않은 아이디이거나, 잘못된 비밀번호입니다.");
+			System.out.println("실패");
 			return new ResponseEntity<String>(FAIL,HttpStatus.NO_CONTENT);
 		}
 	}

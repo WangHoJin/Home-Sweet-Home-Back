@@ -70,7 +70,7 @@ public class JsonParser {
 						String lat = (double) item.get("lat") + "";
 						// 해제시 미세먼지농도
 						StringBuilder sql = new StringBuilder();
-						sql.append("insert into c values \n");
+						sql.append("insert into coffeeshop values \n");
 						sql.append("(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 						pstmt = conn.prepareStatement(sql.toString());
 						pstmt.setString(1, cno);

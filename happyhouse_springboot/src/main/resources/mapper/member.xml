@@ -42,6 +42,13 @@
 		where dong=#{dong}
 	</select>
 	
+	<select id="getInterestArea" parameterType="String" resultType="string">
+		select d.dong
+		from areaofinterest a,dongcode d
+		where a.userid=#{userid}
+		and a.dongcode=d.dongcode
+	</select>
+	
 	<insert id="addInterestArea" parameterType="InterestAreaDto">
 		insert into areaofinterest (userid, dongcode)
 		values (#{userid},#{dongcode})
