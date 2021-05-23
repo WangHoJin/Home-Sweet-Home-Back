@@ -25,9 +25,9 @@
 	</select>
 	
 	<select id="getDongInGugun" parameterType="string" resultType="HouseInfoDto">
-		select distinct dong, code 
-		from houseinfo
-		where code=#{gugun}
+		select distinct dong, left(dongcode,5) code 
+		from dongcode
+		where left(dongcode,5) =#{gugun}
 		order by dong
 	</select>
 	

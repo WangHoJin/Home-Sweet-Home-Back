@@ -45,4 +45,14 @@ public class CoffeeShopController {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
 	}
+	
+	@GetMapping(value = "/coffeeradius/{aptName}")
+	public ResponseEntity<List<CoffeeShopDto>> getCoffeeShopCnt(@PathVariable("aptName") String aptName) throws Exception {
+		List<CoffeeShopDto> list = cSer.getCoffeeShopRadius(aptName);
+		if(list != null && !list.isEmpty()) {
+			return new ResponseEntity<List<CoffeeShopDto>>(list, HttpStatus.OK);
+		} else {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+		}
+	}
 }

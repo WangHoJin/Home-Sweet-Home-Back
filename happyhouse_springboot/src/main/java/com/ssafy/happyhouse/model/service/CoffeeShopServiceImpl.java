@@ -26,4 +26,10 @@ public class CoffeeShopServiceImpl implements CoffeeShopService{
 		return sqlSession.getMapper(CoffeeShopDao.class).getCoffeeShopInDong(dong);
 	}
 
+	@Override
+	public List<CoffeeShopDto> getCoffeeShopRadius(String aptName) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(CoffeeShopDao.class).getCoffeeShopRadius(aptName);
+	}
+
 }

@@ -13,4 +13,12 @@
 		where dong=#{dong}
 		order by cname
 	</select>
+	
+	<select id="getCoffeeShopRadius" parameterType="string" resultType="CoffeeShopDto">
+		SELECT *,(6371*acos(cos(radians(b.lat))*cos(radians(c.lat))*cos(radians(c.lng)-radians(b.lng))+sin(radians(b.lat))*sin(radians(c.lat)))) AS distance
+		FROM coffeeshop c, (select lng, lat from houseinfo where aptName like #{aptName}) b
+		HAVING distance <![CDATA[<=]]> 0.1
+		ORDER BY distance 
+		LIMIT 0,300;
+	</select>
 </mapper>
