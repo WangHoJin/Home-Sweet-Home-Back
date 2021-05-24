@@ -14,8 +14,8 @@ public class CoffeeShopDto {
 	private String lat;
 	private String lng;
 
-	private String cnt;
-	private String coffeeshopcnt;
+	private int cnt;
+	private int coffeeshopcnt;
 
 	public CoffeeShopDto() {
 		super();
@@ -23,8 +23,8 @@ public class CoffeeShopDto {
 	}
 
 	public CoffeeShopDto(int cno, String cname, String branchname, String sido_code, String city, String gugun_code,
-			String gugun_name, String dong, String address1, String address2, String lat, String lng, String cnt,
-			String coffeeshopcnt) {
+			String gugun_name, String dong, String address1, String address2, String lat, String lng, int cnt,
+			int coffeeshopcnt) {
 		super();
 		this.cno = cno;
 		this.cname = cname;
@@ -138,19 +138,19 @@ public class CoffeeShopDto {
 		this.lng = lng;
 	}
 
-	public String getCnt() {
+	public int getCnt() {
 		return cnt;
 	}
 
-	public void setCnt(String cnt) {
+	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
 
-	public String getCoffeeshopcnt() {
+	public int getCoffeeshopcnt() {
 		return coffeeshopcnt;
 	}
 
-	public void setCoffeeshopcnt(String coffeeshopcnt) {
+	public void setCoffeeshopcnt(int coffeeshopcnt) {
 		this.coffeeshopcnt = coffeeshopcnt;
 	}
 
