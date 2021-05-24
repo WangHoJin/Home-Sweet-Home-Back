@@ -49,6 +49,12 @@ public class CoffeeShopServiceImpl implements CoffeeShopService{
 	public List<CoffeeShopDto> getCoffeeShopRank(String dong) {
 		return sqlSession.getMapper(CoffeeShopDao.class).getCoffeeShopRank(dong);
 	}
+	
+	@Override
+	public List<CoffeeShopDto> getCoffeeMarkerInfo(CoffeeShopDto coffeeshopDto) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(CoffeeShopDao.class).getCoffeeMarkerInfo(coffeeshopDto);
+	}
 
 
 }

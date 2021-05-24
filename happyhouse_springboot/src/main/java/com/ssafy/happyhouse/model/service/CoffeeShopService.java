@@ -22,4 +22,7 @@ public interface CoffeeShopService {
 		
 		// 해당 동 내 커피샵 순위
 		List<CoffeeShopDto> getCoffeeShopRank(String dong);
+		
+		// 마커클릭시 카페 정보 가져오기
+		List<CoffeeShopDto> getCoffeeMarkerInfo(CoffeeShopDto coffeeshopDto);
 }

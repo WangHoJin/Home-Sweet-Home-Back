@@ -53,4 +53,10 @@
 		order by coffeeshopcnt desc
 		LIMIT 0,5;
 	</select>
+	
+	<select id="getCoffeeMarkerInfo" parameterType="CoffeeShopDto" resultType="CoffeeShopDto">
+		select cname,branchname,address1,address2
+		from coffeeshop
+		where lat=#{lat} and lng=#{lng}
+	</select>
 </mapper>

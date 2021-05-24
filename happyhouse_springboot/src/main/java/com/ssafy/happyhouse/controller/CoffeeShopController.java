@@ -87,4 +87,15 @@ public class CoffeeShopController {
 		}
 	}
 	
+	@GetMapping(value="/coffeemarker/{lat}/{lng}")
+	public ResponseEntity<List<CoffeeShopDto>> getCoffeeMarkerInfo(@PathVariable("lat") String lat,@PathVariable("lng") String lng) throws Exception{
+		CoffeeShopDto coffeeshopDto=new CoffeeShopDto(lat,lng);
+		List<CoffeeShopDto> list=cSer.getCoffeeMarkerInfo(coffeeshopDto);
+		if(list!=null && !list.isEmpty()) {
+			return new ResponseEntity<List<CoffeeShopDto>>(list,HttpStatus.OK);
+		} else {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+		}
+	}
+	
 }

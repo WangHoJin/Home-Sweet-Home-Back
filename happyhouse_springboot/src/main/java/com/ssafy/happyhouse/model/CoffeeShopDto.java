@@ -44,6 +44,12 @@ public class CoffeeShopDto {
 		this.cnt = cnt;
 		this.coffeeshopcnt = coffeeshopcnt;
 	}
+	
+	public CoffeeShopDto(String lat,String lng) {
+		super();
+		this.lng=lng;
+		this.lat=lat;
+	}
 
 	public int getCno() {
 		return cno;
