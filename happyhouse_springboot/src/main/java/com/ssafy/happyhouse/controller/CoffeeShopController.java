@@ -46,15 +46,28 @@ public class CoffeeShopController {
 		}
 	}
 	
-	@GetMapping(value = "/coffeeradius/{aptName}")
-	public ResponseEntity<List<CoffeeShopDto>> getCoffeeShopCnt(@PathVariable("aptName") String aptName) throws Exception {
-		List<CoffeeShopDto> list = cSer.getCoffeeShopRadius(aptName);
+	@GetMapping(value = "/coffeeradius/{aptName}/{radius}")
+	public ResponseEntity<List<CoffeeShopDto>> getCoffeeShopCnt(@PathVariable("aptName") String aptName, @PathVariable("radius") int radius) throws Exception {
+		double dradius = (double)(radius / 1000.0);
+		List<CoffeeShopDto> list = cSer.getCoffeeShopRadius(aptName,dradius);
 		if(list != null && !list.isEmpty()) {
 			return new ResponseEntity<List<CoffeeShopDto>>(list, HttpStatus.OK);
 		} else {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
 	}
+	
+	@GetMapping(value = "/coffeeradiusrank/{aptName}/{radius}")
+	public ResponseEntity<List<CoffeeShopDto>> getCoffeeShopRadiusRank(@PathVariable("aptName") String aptName, @PathVariable("radius") int radius) throws Exception {
+		double dradius = (double)(radius / 1000.0);
+		List<CoffeeShopDto> list = cSer.getCoffeeShopRadiusRank(aptName,dradius);
+		if(list != null && !list.isEmpty()) {
+			return new ResponseEntity<List<CoffeeShopDto>>(list, HttpStatus.OK);
+		} else {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+		}
+	}
+	
 	@GetMapping(value = "/dongrank")
 	public ResponseEntity<List<CoffeeShopDto>> getDongRank() throws Exception {
 		List<CoffeeShopDto> list = cSer.getDongRank();

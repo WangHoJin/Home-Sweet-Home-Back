@@ -16,6 +16,9 @@ public class CoffeeShopDto {
 
 	private int cnt;
 	private int coffeeshopcnt;
+	private String aptName;
+	private double radius;
+	private double distance;
 
 	public CoffeeShopDto() {
 		super();
@@ -152,6 +155,31 @@ public class CoffeeShopDto {
 
 	public void setCoffeeshopcnt(int coffeeshopcnt) {
 		this.coffeeshopcnt = coffeeshopcnt;
+	}
+	
+
+	public String getAptName() {
+		return aptName;
+	}
+
+	public void setAptName(String aptName) {
+		this.aptName = aptName;
+	}
+
+	public double getRadius() {
+		return radius;
+	}
+
+	public void setRadius(double radius) {
+		this.radius = radius;
+	}
+	
+	public double getDistance() {
+		return distance;
+	}
+
+	public void setDistance(double distance) {
+		this.distance = distance;
 	}
 
 	@Override

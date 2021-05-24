@@ -11,8 +11,11 @@ public interface CoffeeShopDao {
 	// 해당 동 카페 검색
 	List<CoffeeShopDto> getCoffeeShopInDong(String dong);
 	
-	// 반경 내 카페 수
-	List<CoffeeShopDto> getCoffeeShopRadius(String aptName);
+	// 반경 내 카페  정보
+	List<CoffeeShopDto> getCoffeeShopRadius(CoffeeShopDto coffeeShopDto);
+	
+	// 반경 내 카페 랭크
+	List<CoffeeShopDto> getCoffeeShopRadiusRank(CoffeeShopDto coffeeShopDto);
 			
 	// 커피집이 가장 많은 동네
 	List<CoffeeShopDto> getDongRank();

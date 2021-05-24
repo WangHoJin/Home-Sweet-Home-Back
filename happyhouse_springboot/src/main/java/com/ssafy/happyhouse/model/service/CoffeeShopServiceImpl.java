@@ -16,32 +16,39 @@ public class CoffeeShopServiceImpl implements CoffeeShopService{
 	
 	@Override
 	public List<CoffeeShopDto> listCoffeeShopInfo() {
-		// TODO Auto-generated method stub
 		return sqlSession.getMapper(CoffeeShopDao.class).listCoffeeShopInfo();
 	}
 
 	@Override
 	public List<CoffeeShopDto> getCoffeeShopInDong(String dong) {
-		// TODO Auto-generated method stub
 		return sqlSession.getMapper(CoffeeShopDao.class).getCoffeeShopInDong(dong);
 	}
 
 	@Override
-	public List<CoffeeShopDto> getCoffeeShopRadius(String aptName) {
-		// TODO Auto-generated method stub
-		return sqlSession.getMapper(CoffeeShopDao.class).getCoffeeShopRadius(aptName);
+	public List<CoffeeShopDto> getCoffeeShopRadius(String aptName, double radius) {
+		CoffeeShopDto coffeeShopDto = new CoffeeShopDto();
+		coffeeShopDto.setAptName(aptName);
+		coffeeShopDto.setRadius(radius);
+		return sqlSession.getMapper(CoffeeShopDao.class).getCoffeeShopRadius(coffeeShopDto);
 	}
 
 	@Override
+	public List<CoffeeShopDto> getCoffeeShopRadiusRank(String aptName, double radius) {
+		CoffeeShopDto coffeeShopDto = new CoffeeShopDto();
+		coffeeShopDto.setAptName(aptName);
+		coffeeShopDto.setRadius(radius);
+		return sqlSession.getMapper(CoffeeShopDao.class).getCoffeeShopRadiusRank(coffeeShopDto);
+	}
+	
+	@Override
 	public List<CoffeeShopDto> getDongRank() {
-		// TODO Auto-generated method stub
 		return sqlSession.getMapper(CoffeeShopDao.class).getDongRank();
 	}
 	
 	@Override
 	public List<CoffeeShopDto> getCoffeeShopRank(String dong) {
-		// TODO Auto-generated method stub
 		return sqlSession.getMapper(CoffeeShopDao.class).getCoffeeShopRank(dong);
 	}
+
 
 }
