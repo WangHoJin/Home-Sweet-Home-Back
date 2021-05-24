@@ -15,10 +15,29 @@
 	</select>
 	
 	<select id="getCoffeeShopRadius" parameterType="string" resultType="CoffeeShopDto">
-		SELECT *,(6371*acos(cos(radians(b.lat))*cos(radians(c.lat))*cos(radians(c.lng)-radians(b.lng))+sin(radians(b.lat))*sin(radians(c.lat)))) AS distance
-		FROM coffeeshop c, (select lng, lat from houseinfo where aptName like #{aptName}) b
-		HAVING distance <![CDATA[<=]]> 0.1
-		ORDER BY distance 
+		select *,(6371*acos(cos(radians(b.lat))*cos(radians(c.lat))*cos(radians(c.lng)-radians(b.lng))+sin(radians(b.lat))*sin(radians(c.lat)))) AS distance
+		from coffeeshop c, (select lng, lat from houseinfo where aptName like #{aptName}) b
+		having distance <![CDATA[<=]]> 0.1
+		order by distance 
 		LIMIT 0,300;
+	</select>
+	
+	<select id="getDongRank" resultType="CoffeeShopDto">
+		select c.dong, count(dong) cnt
+		from coffeeshop c
+		group by c.dong
+		order by cnt desc
+		LIMIT 0,3;
+	</select>
+	
+	<select id="getCoffeeShopRank" resultType="CoffeeShopDto">
+		select a.cname, count(a.cname) as coffeeshopcnt
+		from (select *
+				from coffeeshop
+				where dong like '역삼동') a
+		where cname not like '간단하지만특별한화피디Cafe' and cname not like '카페'
+		group by a.cname
+		order by coffeeshopcnt desc
+		LIMIT 0,5;
 	</select>
 </mapper>

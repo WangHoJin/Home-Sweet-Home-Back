@@ -55,4 +55,23 @@ public class CoffeeShopController {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
 	}
+	@GetMapping(value = "/dongrank")
+	public ResponseEntity<List<CoffeeShopDto>> getDongRank() throws Exception {
+		List<CoffeeShopDto> list = cSer.getDongRank();
+		if(list != null && !list.isEmpty()) {
+			return new ResponseEntity<List<CoffeeShopDto>>(list, HttpStatus.OK);
+		} else {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+		}
+	}
+	@GetMapping(value = "/coffeeshoprank/{dong}")
+	public ResponseEntity<List<CoffeeShopDto>> getCoffeeShopRank(@PathVariable("dong") String dong) throws Exception {
+		List<CoffeeShopDto> list = cSer.getCoffeeShopRank(dong);
+		if(list != null && !list.isEmpty()) {
+			return new ResponseEntity<List<CoffeeShopDto>>(list, HttpStatus.OK);
+		} else {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+		}
+	}
+	
 }

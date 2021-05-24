@@ -14,13 +14,17 @@ public class CoffeeShopDto {
 	private String lat;
 	private String lng;
 
+	private String cnt;
+	private String coffeeshopcnt;
+
 	public CoffeeShopDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public CoffeeShopDto(int cno, String cname, String branchname, String sido_code, String city, String gugun_code,
-			String gugun_name, String dong, String address1, String address2, String lat, String lng) {
+			String gugun_name, String dong, String address1, String address2, String lat, String lng, String cnt,
+			String coffeeshopcnt) {
 		super();
 		this.cno = cno;
 		this.cname = cname;
@@ -34,6 +38,8 @@ public class CoffeeShopDto {
 		this.address2 = address2;
 		this.lat = lat;
 		this.lng = lng;
+		this.cnt = cnt;
+		this.coffeeshopcnt = coffeeshopcnt;
 	}
 
 	public int getCno() {
@@ -132,11 +138,28 @@ public class CoffeeShopDto {
 		this.lng = lng;
 	}
 
+	public String getCnt() {
+		return cnt;
+	}
+
+	public void setCnt(String cnt) {
+		this.cnt = cnt;
+	}
+
+	public String getCoffeeshopcnt() {
+		return coffeeshopcnt;
+	}
+
+	public void setCoffeeshopcnt(String coffeeshopcnt) {
+		this.coffeeshopcnt = coffeeshopcnt;
+	}
+
 	@Override
 	public String toString() {
 		return "CoffeeShopDto [cno=" + cno + ", cname=" + cname + ", branchname=" + branchname + ", sido_code="
 				+ sido_code + ", city=" + city + ", gugun_code=" + gugun_code + ", gugun_name=" + gugun_name + ", dong="
-				+ dong + ", address1=" + address1 + ", address2=" + address2 + ", lat=" + lat + ", lng=" + lng + "]";
+				+ dong + ", address1=" + address1 + ", address2=" + address2 + ", lat=" + lat + ", lng=" + lng
+				+ ", cnt=" + cnt + ", coffeeshopcnt=" + coffeeshopcnt + "]";
 	}
 
 }

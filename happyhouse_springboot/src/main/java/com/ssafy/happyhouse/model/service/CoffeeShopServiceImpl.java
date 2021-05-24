@@ -32,4 +32,16 @@ public class CoffeeShopServiceImpl implements CoffeeShopService{
 		return sqlSession.getMapper(CoffeeShopDao.class).getCoffeeShopRadius(aptName);
 	}
 
+	@Override
+	public List<CoffeeShopDto> getDongRank() {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(CoffeeShopDao.class).getDongRank();
+	}
+	
+	@Override
+	public List<CoffeeShopDto> getCoffeeShopRank(String dong) {
+		// TODO Auto-generated method stub
+		return sqlSession.getMapper(CoffeeShopDao.class).getCoffeeShopRank(dong);
+	}
+
 }
