@@ -19,7 +19,7 @@
 		from coffeeshop c, (select lng, lat from houseinfo where aptName like #{aptName}) b
 		having distance <![CDATA[<=]]> #{radius}
 		order by distance 
-		LIMIT 0,25;
+		LIMIT 0,100;
 	</select>
 	
 	<select id="getCoffeeShopRadiusRank" parameterType="CoffeeShopDto" resultType="CoffeeShopDto">

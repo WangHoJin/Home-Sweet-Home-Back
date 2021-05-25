@@ -19,13 +19,13 @@ public class JsonParser {
 
 	public static void main(String[] args) {
 		// 행정동별
-		getStoreListInDong();
+		getCoffeeShop();
 		// 업종별
-//		getStoreListInUpjong();
+		getStore();
 	}
 
 	// 행정동별
-	private static void getStoreListInDong() {
+	private static void getCoffeeShop() {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -55,18 +55,18 @@ public class JsonParser {
 
 					for (int i = 0; i < items.size(); i++) {
 						JSONObject item = (JSONObject) items.get(i);
-						String cno = (String) item.get("bizesId"); // 발령날짜
-						String cname = (String) item.get("bizesNm"); // 발령지역
-						String brachname = (String) item.get("brchNm"); // 발령권역
-						String sido_code = (String) item.get("ctprvnCd"); // 발령일자
-						String city = (String) item.get("ctprvnNm"); // 발령시간
-						String gugun_code = (String) item.get("signguCd"); // 발령농도
-						String gugun_name = (String) item.get("signguNm"); // 미세먼지 구분 PM10, PM25
-						String dongcode = (String) item.get("ldongCd"); // 경보단계 : 주의보/경보
-						String dong = (String) item.get("ldongNm"); // 해제일자
-						String address1 = (String) item.get("lnoAdr"); // 해제시간
-						String address2 = (String) item.get("rdnmAdr"); // 해제시 미세먼지농도
-						String lng = (double) item.get("lon") + ""; // 해제시 미세먼지농도
+						String cno = (String) item.get("bizesId"); 
+						String cname = (String) item.get("bizesNm"); 
+						String brachname = (String) item.get("brchNm"); 
+						String sido_code = (String) item.get("ctprvnCd"); 
+						String city = (String) item.get("ctprvnNm"); 
+						String gugun_code = (String) item.get("signguCd"); 
+						String gugun_name = (String) item.get("signguNm");
+						String dongcode = (String) item.get("ldongCd"); 
+						String dong = (String) item.get("ldongNm"); 
+						String address1 = (String) item.get("lnoAdr");
+						String address2 = (String) item.get("rdnmAdr"); 
+						String lng = (double) item.get("lon") + ""; 
 						String lat = (double) item.get("lat") + "";
 						// 해제시 미세먼지농도
 						StringBuilder sql = new StringBuilder();
@@ -107,7 +107,7 @@ public class JsonParser {
 	}
 
 	// 업종별
-	static void getStoreListInUpjong() {
+	static void getStore() {
 		try {
 			String urlStr = "http://apis.data.go.kr/B553077/api/open/sdsc/storeListInUpjong?" + "divId=indsMclsCd"
 					+ "&key=Q12" + "&type=json" + "&ServiceKey=" + serviceKey;
