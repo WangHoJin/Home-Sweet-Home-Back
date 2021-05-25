@@ -19,15 +19,18 @@ public class CoffeeShopDto {
 	private String aptName;
 	private double radius;
 	private double distance;
+	private int no;
 
 	public CoffeeShopDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
 	public CoffeeShopDto(int cno, String cname, String branchname, String sido_code, String city, String gugun_code,
 			String gugun_name, String dong, String address1, String address2, String lat, String lng, int cnt,
-			int coffeeshopcnt) {
+			int coffeeshopcnt, String aptName, double radius, double distance, int no) {
 		super();
 		this.cno = cno;
 		this.cname = cname;
@@ -43,12 +46,18 @@ public class CoffeeShopDto {
 		this.lng = lng;
 		this.cnt = cnt;
 		this.coffeeshopcnt = coffeeshopcnt;
+		this.aptName = aptName;
+		this.radius = radius;
+		this.distance = distance;
+		this.no = no;
 	}
-	
-	public CoffeeShopDto(String lat,String lng) {
+
+
+
+	public CoffeeShopDto(String lat, String lng) {
 		super();
-		this.lng=lng;
-		this.lat=lat;
+		this.lng = lng;
+		this.lat = lat;
 	}
 
 	public int getCno() {
@@ -162,7 +171,6 @@ public class CoffeeShopDto {
 	public void setCoffeeshopcnt(int coffeeshopcnt) {
 		this.coffeeshopcnt = coffeeshopcnt;
 	}
-	
 
 	public String getAptName() {
 		return aptName;
@@ -179,13 +187,21 @@ public class CoffeeShopDto {
 	public void setRadius(double radius) {
 		this.radius = radius;
 	}
-	
+
 	public double getDistance() {
 		return distance;
 	}
 
 	public void setDistance(double distance) {
 		this.distance = distance;
+	}
+
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
 	}
 
 	@Override

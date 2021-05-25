@@ -12,10 +12,10 @@ public interface CoffeeShopService {
 		List<CoffeeShopDto> getCoffeeShopInDong(String dong);
 		
 		// 반경 내 카페 정보
-		List<CoffeeShopDto> getCoffeeShopRadius(String aptName, double radius);
+		List<CoffeeShopDto> getCoffeeShopRadius(CoffeeShopDto coffeeShopDto);
 		
 		// 반경 내 카페 랭크
-		List<CoffeeShopDto> getCoffeeShopRadiusRank(String aptName, double radius);
+		List<CoffeeShopDto> getCoffeeShopRadiusRank(CoffeeShopDto coffeeShopDto);
 		
 		// 커피집이 가장 많은 동네
 		List<CoffeeShopDto> getDongRank();
@@ -24,5 +24,5 @@ public interface CoffeeShopService {
 		List<CoffeeShopDto> getCoffeeShopRank(String dong);
 		
 		// 마커클릭시 카페 정보 가져오기
-		List<CoffeeShopDto> getCoffeeMarkerInfo(CoffeeShopDto coffeeshopDto);
+		List<CoffeeShopDto> getCoffeeMarkerInfo(CoffeeShopDto coffeeShopDto);
 }

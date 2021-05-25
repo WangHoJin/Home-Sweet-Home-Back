@@ -46,10 +46,12 @@ public class CoffeeShopController {
 		}
 	}
 	
-	@GetMapping(value = "/coffeeradius/{aptName}/{radius}")
-	public ResponseEntity<List<CoffeeShopDto>> getCoffeeShopCnt(@PathVariable("aptName") String aptName, @PathVariable("radius") int radius) throws Exception {
+	@GetMapping(value = "/coffeeradius/{lat}/{lng}/{radius}")
+	public ResponseEntity<List<CoffeeShopDto>> getCoffeeShopCnt(@PathVariable("lat") String lat,@PathVariable("lng") String lng, @PathVariable("radius") int radius) throws Exception {
 		double dradius = (double)(radius / 1000.0);
-		List<CoffeeShopDto> list = cSer.getCoffeeShopRadius(aptName,dradius);
+		CoffeeShopDto coffeeShopDto=new CoffeeShopDto(lat,lng);
+		coffeeShopDto.setRadius(dradius);
+		List<CoffeeShopDto> list = cSer.getCoffeeShopRadius(coffeeShopDto);
 		if(list != null && !list.isEmpty()) {
 			return new ResponseEntity<List<CoffeeShopDto>>(list, HttpStatus.OK);
 		} else {
@@ -57,10 +59,12 @@ public class CoffeeShopController {
 		}
 	}
 	
-	@GetMapping(value = "/coffeeradiusrank/{aptName}/{radius}")
-	public ResponseEntity<List<CoffeeShopDto>> getCoffeeShopRadiusRank(@PathVariable("aptName") String aptName, @PathVariable("radius") int radius) throws Exception {
+	@GetMapping(value = "/coffeeradiusrank/{lat}/{lng}/{radius}")
+	public ResponseEntity<List<CoffeeShopDto>> getCoffeeShopRadiusRank(@PathVariable("lat") String lat,@PathVariable("lng") String lng, @PathVariable("radius") int radius) throws Exception {
 		double dradius = (double)(radius / 1000.0);
-		List<CoffeeShopDto> list = cSer.getCoffeeShopRadiusRank(aptName,dradius);
+		CoffeeShopDto coffeeShopDto=new CoffeeShopDto(lat,lng);
+		coffeeShopDto.setRadius(dradius);
+		List<CoffeeShopDto> list = cSer.getCoffeeShopRadiusRank(coffeeShopDto);
 		if(list != null && !list.isEmpty()) {
 			return new ResponseEntity<List<CoffeeShopDto>>(list, HttpStatus.OK);
 		} else {
@@ -89,8 +93,8 @@ public class CoffeeShopController {
 	
 	@GetMapping(value="/coffeemarker/{lat}/{lng}")
 	public ResponseEntity<List<CoffeeShopDto>> getCoffeeMarkerInfo(@PathVariable("lat") String lat,@PathVariable("lng") String lng) throws Exception{
-		CoffeeShopDto coffeeshopDto=new CoffeeShopDto(lat,lng);
-		List<CoffeeShopDto> list=cSer.getCoffeeMarkerInfo(coffeeshopDto);
+		CoffeeShopDto coffeeShopDto=new CoffeeShopDto(lat,lng);
+		List<CoffeeShopDto> list=cSer.getCoffeeMarkerInfo(coffeeShopDto);
 		if(list!=null && !list.isEmpty()) {
 			return new ResponseEntity<List<CoffeeShopDto>>(list,HttpStatus.OK);
 		} else {

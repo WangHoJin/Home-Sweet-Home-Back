@@ -26,18 +26,12 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public List<StoreDto> getStoreRadius(int no, double radius) {
-		StoreDto storeDto=new StoreDto();
-		storeDto.setNo(no);
-		storeDto.setRadius(radius);
+	public List<StoreDto> getStoreRadius(StoreDto storeDto) {
 		return sqlSession.getMapper(StoreDao.class).getStoreRadius(storeDto);
 	}
 
 	@Override
-	public List<StoreDto> getStoreRadiusRank(int no, double radius) {
-		StoreDto storeDto=new StoreDto();
-		storeDto.setNo(no);
-		storeDto.setRadius(radius);
+	public List<StoreDto> getStoreRadiusRank(StoreDto storeDto) {
 		return sqlSession.getMapper(StoreDao.class).getStoreRadiusRank(storeDto);
 	}
 

@@ -16,18 +16,18 @@
 	
 	<select id="getStoreRadius" parameterType="StoreDto" resultType="StoreDto">
 		select *,(6371*acos(cos(radians(b.lat))*cos(radians(c.lat))*cos(radians(c.lng)-radians(b.lng))+sin(radians(b.lat))*sin(radians(c.lat)))) AS distance
-		from store c, (select lng, lat from houseinfo where aptName like #{aptName}) b
+		from store c, (select lng, lat from houseinfo where lat=#{lat} and lng=#{lng}) b
 		having distance <![CDATA[<=]]> #{radius}
 		order by distance 
 		LIMIT 0,100;
 	</select>
 	
 	<select id="getStoreRadiusRank" parameterType="StoreDto" resultType="StoreDto">
-		select a.sname, min(distance) as distance, count(a.sname) as Storecnt
+		select a.sname, min(distance) as distance, count(a.sname) as storecnt
 		from (select sname,	(6371*acos(cos(radians(b.lat))*cos(radians(c.lat))*cos(radians(c.lng)-radians(b.lng))+sin(radians(b.lat))*sin(radians(c.lat)))) AS distance
 				from store c, (select h.lng, h.lat
 									from houseinfo h
-									where aptName like #{aptName}) b
+									where h.lat=#{lat} and h.lng=#{lng}) b
 				having distance <![CDATA[<=]]> #{radius}) a
 		where sname not like '간단하지만특별한화피디Cafe' and sname not like '카페'
 		group by a.sname

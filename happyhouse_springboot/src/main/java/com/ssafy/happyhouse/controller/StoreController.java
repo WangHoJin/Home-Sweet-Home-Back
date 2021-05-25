@@ -23,7 +23,7 @@ import com.ssafy.happyhouse.model.service.StoreService;
 @RequestMapping("/store")
 @CrossOrigin("*")
 public class StoreController {
-	private static final Logger logger = LoggerFactory.getLogger(HouseSearchController2.class);
+	private static final Logger logger = LoggerFactory.getLogger(StoreController.class);
 	
 	@Autowired
 	private StoreService sSer;
@@ -48,10 +48,12 @@ public class StoreController {
 		}
 	}
 	
-	@GetMapping(value = "/storeradius/{no}/{radius}")
-	public ResponseEntity<List<StoreDto>> getStoreCnt(@PathVariable("no") int no, @PathVariable("radius") int radius) throws Exception {
+	@GetMapping(value = "/storeradius/{lat}/{lng}/{radius}")
+	public ResponseEntity<List<StoreDto>> getStoreCnt(@PathVariable("lat") String lat,@PathVariable("lng") String lng, @PathVariable("radius") int radius) throws Exception {
 		double dradius = (double)(radius / 1000.0);
-		List<StoreDto> list = sSer.getStoreRadius(no, dradius);
+		StoreDto storeDto = new StoreDto(lat, lng);
+		storeDto.setRadius(dradius);
+		List<StoreDto> list = sSer.getStoreRadius(storeDto);
 		if(list != null && !list.isEmpty()) {
 			return new ResponseEntity<List<StoreDto>>(list, HttpStatus.OK);
 		} else {
@@ -59,10 +61,12 @@ public class StoreController {
 		}
 	}
 	
-	@GetMapping(value = "/storeradiusrank/{no}/{radius}")
-	public ResponseEntity<List<StoreDto>> getStoreRadiusRank(@PathVariable("no") int no, @PathVariable("radius") int radius) throws Exception {
+	@GetMapping(value = "/storeradiusrank/{lat}/{lng}/{radius}")
+	public ResponseEntity<List<StoreDto>> getStoreRadiusRank(@PathVariable("lat") String lat,@PathVariable("lng") String lng, @PathVariable("radius") int radius) throws Exception {
 		double dradius = (double)(radius / 1000.0);
-		List<StoreDto> list = sSer.getStoreRadiusRank(no, dradius);
+		StoreDto storeDto = new StoreDto(lat, lng);
+		storeDto.setRadius(dradius);
+		List<StoreDto> list = sSer.getStoreRadiusRank(storeDto);
 		if(list != null && !list.isEmpty()) {
 			return new ResponseEntity<List<StoreDto>>(list, HttpStatus.OK);
 		} else {
@@ -91,7 +95,6 @@ public class StoreController {
 	
 	@GetMapping(value="/storemarker/{lat}/{lng}")
 	public ResponseEntity<List<StoreDto>> getStoreMarkerInfo(@PathVariable("lat") String lat,@PathVariable("lng") String lng) throws Exception{
-		CoffeeShopDto coffeeshopDto=new CoffeeShopDto(lat,lng);
 		StoreDto storeDto = new StoreDto(lat,lng);
 		List<StoreDto> list=sSer.getStoreMarkerInfo(storeDto);
 		if(list!=null && !list.isEmpty()) {

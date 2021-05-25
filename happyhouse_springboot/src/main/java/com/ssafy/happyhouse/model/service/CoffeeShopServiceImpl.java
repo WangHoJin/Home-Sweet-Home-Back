@@ -25,18 +25,12 @@ public class CoffeeShopServiceImpl implements CoffeeShopService{
 	}
 
 	@Override
-	public List<CoffeeShopDto> getCoffeeShopRadius(String aptName, double radius) {
-		CoffeeShopDto coffeeShopDto = new CoffeeShopDto();
-		coffeeShopDto.setAptName(aptName);
-		coffeeShopDto.setRadius(radius);
+	public List<CoffeeShopDto> getCoffeeShopRadius(CoffeeShopDto coffeeShopDto) {
 		return sqlSession.getMapper(CoffeeShopDao.class).getCoffeeShopRadius(coffeeShopDto);
 	}
 
 	@Override
-	public List<CoffeeShopDto> getCoffeeShopRadiusRank(String aptName, double radius) {
-		CoffeeShopDto coffeeShopDto = new CoffeeShopDto();
-		coffeeShopDto.setAptName(aptName);
-		coffeeShopDto.setRadius(radius);
+	public List<CoffeeShopDto> getCoffeeShopRadiusRank(CoffeeShopDto coffeeShopDto) {
 		return sqlSession.getMapper(CoffeeShopDao.class).getCoffeeShopRadiusRank(coffeeShopDto);
 	}
 	
@@ -51,9 +45,9 @@ public class CoffeeShopServiceImpl implements CoffeeShopService{
 	}
 	
 	@Override
-	public List<CoffeeShopDto> getCoffeeMarkerInfo(CoffeeShopDto coffeeshopDto) {
+	public List<CoffeeShopDto> getCoffeeMarkerInfo(CoffeeShopDto coffeeShopDto) {
 		// TODO Auto-generated method stub
-		return sqlSession.getMapper(CoffeeShopDao.class).getCoffeeMarkerInfo(coffeeshopDto);
+		return sqlSession.getMapper(CoffeeShopDao.class).getCoffeeMarkerInfo(coffeeShopDto);
 	}
 
 

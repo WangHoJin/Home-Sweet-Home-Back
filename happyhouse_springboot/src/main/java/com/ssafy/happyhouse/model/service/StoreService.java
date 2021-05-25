@@ -12,10 +12,10 @@ public interface StoreService {
 	List<StoreDto> getStoreInDong(String dong);
 	
 	// 반경 내 편의점 정보
-	List<StoreDto> getStoreRadius(int no,double radius);
+	List<StoreDto> getStoreRadius(StoreDto storeDto);
 	
 	// 반경 내 편의점 랭크
-	List<StoreDto> getStoreRadiusRank(int no, double radius);
+	List<StoreDto> getStoreRadiusRank(StoreDto storeDto);
 	
 	// 편의점이 가장 많은 동네
 	List<StoreDto> getDongRank();
