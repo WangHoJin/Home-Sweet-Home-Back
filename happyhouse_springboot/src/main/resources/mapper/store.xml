@@ -15,8 +15,8 @@
 	</select>
 	
 	<select id="getStoreRadius" parameterType="StoreDto" resultType="StoreDto">
-		select *,(6371*acos(cos(radians(b.lat))*cos(radians(c.lat))*cos(radians(c.lng)-radians(b.lng))+sin(radians(b.lat))*sin(radians(c.lat)))) AS distance
-		from store c, (select lng, lat from houseinfo where lat=#{lat} and lng=#{lng}) b
+		select *,(6371*acos(cos(radians(#{lat}))*cos(radians(c.lat))*cos(radians(c.lng)-radians(#{lng}))+sin(radians(#{lat}))*sin(radians(c.lat)))) AS distance
+		from store c
 		having distance <![CDATA[<=]]> #{radius}
 		order by distance 
 		LIMIT 0,100;
@@ -24,15 +24,12 @@
 	
 	<select id="getStoreRadiusRank" parameterType="StoreDto" resultType="StoreDto">
 		select a.sname, min(distance) as distance, count(a.sname) as storecnt
-		from (select sname,	(6371*acos(cos(radians(b.lat))*cos(radians(c.lat))*cos(radians(c.lng)-radians(b.lng))+sin(radians(b.lat))*sin(radians(c.lat)))) AS distance
-				from store c, (select h.lng, h.lat
-									from houseinfo h
-									where h.lat=#{lat} and h.lng=#{lng}) b
+		from (select sname,	(6371*acos(cos(radians(#{lat}))*cos(radians(c.lat))*cos(radians(c.lng)-radians(#{lng}))+sin(radians(#{lat}))*sin(radians(c.lat)))) AS distance
+				from store c
 				having distance <![CDATA[<=]]> #{radius}) a
-		where sname not like '간단하지만특별한화피디Cafe' and sname not like '카페'
 		group by a.sname
 		order by storecnt desc, distance asc
-		LIMIT 0,20;
+		LIMIT 0,5;
 	</select>
 	
 	<select id="getDongRank" resultType="StoreDto">
@@ -53,7 +50,7 @@
 		LIMIT 0,5;
 	</select>
 	
-	<select id="getCoffeeMarkerInfo" parameterType="StoreDto" resultType="StoreDto">
+	<select id="getStoreMarkerInfo" parameterType="StoreDto" resultType="StoreDto">
 		select sname,branchname,address1,address2
 		from store
 		where lat=#{lat} and lng=#{lng}
