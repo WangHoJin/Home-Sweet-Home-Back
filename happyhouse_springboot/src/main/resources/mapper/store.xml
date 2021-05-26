@@ -47,7 +47,7 @@
 				where dong like #{dong}) a
 		group by a.sname
 		order by Storecnt desc
-		LIMIT 0,5;
+		LIMIT 0,3;
 	</select>
 	
 	<select id="getStoreMarkerInfo" parameterType="StoreDto" resultType="StoreDto">

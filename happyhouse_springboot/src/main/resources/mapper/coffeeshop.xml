@@ -51,7 +51,7 @@
 		where cname not like '간단하지만특별한화피디Cafe' and cname not like '카페'
 		group by a.cname
 		order by coffeeshopcnt desc
-		LIMIT 0,5;
+		LIMIT 0,3;
 	</select>
 	
 	<select id="getCoffeeMarkerInfo" parameterType="CoffeeShopDto" resultType="CoffeeShopDto">
