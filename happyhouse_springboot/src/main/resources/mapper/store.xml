@@ -23,7 +23,7 @@
 	</select>
 	
 	<select id="getStoreRadiusRank" parameterType="StoreDto" resultType="StoreDto">
-		select a.sname, min(distance) as distance, count(a.sname) as storecnt
+		select *, min(distance) as distance, count(a.sname) as storecnt
 		from (select sname,	(6371*acos(cos(radians(#{lat}))*cos(radians(c.lat))*cos(radians(c.lng)-radians(#{lng}))+sin(radians(#{lat}))*sin(radians(c.lat)))) AS distance
 				from store c
 				having distance <![CDATA[<=]]> #{radius}) a
@@ -32,9 +32,10 @@
 		LIMIT 0,5;
 	</select>
 	
-	<select id="getDongRank" resultType="StoreDto">
+	<select id="getDongRank" parameterType="string" resultType="StoreDto">
 		select c.dong, count(dong) cnt
 		from store c
+		where gugun_name like #{gugun_name}
 		group by c.dong
 		order by cnt desc
 		LIMIT 0,3;

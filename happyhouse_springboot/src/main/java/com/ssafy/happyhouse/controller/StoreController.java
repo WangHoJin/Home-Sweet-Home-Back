@@ -74,9 +74,9 @@ public class StoreController {
 		}
 	}
 	
-	@GetMapping(value = "/dongrank")
-	public ResponseEntity<List<StoreDto>> getDongRank() throws Exception {
-		List<StoreDto> list = sSer.getDongRank();
+	@GetMapping(value = "/dongrank/{gugun_name}")
+	public ResponseEntity<List<StoreDto>> getDongRank(@PathVariable("gugun_name") String gugun_name) throws Exception {
+		List<StoreDto> list = sSer.getDongRank(gugun_name);
 		if(list != null && !list.isEmpty()) {
 			return new ResponseEntity<List<StoreDto>>(list, HttpStatus.OK);
 		} else {

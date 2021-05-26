@@ -35,8 +35,8 @@ public class CoffeeShopServiceImpl implements CoffeeShopService{
 	}
 	
 	@Override
-	public List<CoffeeShopDto> getDongRank() {
-		return sqlSession.getMapper(CoffeeShopDao.class).getDongRank();
+	public List<CoffeeShopDto> getDongRank(String gugun_name) {
+		return sqlSession.getMapper(CoffeeShopDao.class).getDongRank(gugun_name);
 	}
 	
 	@Override

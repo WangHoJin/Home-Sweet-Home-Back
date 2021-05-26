@@ -72,9 +72,9 @@ public class CoffeeShopController {
 		}
 	}
 	
-	@GetMapping(value = "/dongrank")
-	public ResponseEntity<List<CoffeeShopDto>> getDongRank() throws Exception {
-		List<CoffeeShopDto> list = cSer.getDongRank();
+	@GetMapping(value = "/dongrank/{gugun_name}")
+	public ResponseEntity<List<CoffeeShopDto>> getDongRank(@PathVariable("gugun_name") String gugun_name) throws Exception {
+		List<CoffeeShopDto> list = cSer.getDongRank(gugun_name);
 		if(list != null && !list.isEmpty()) {
 			return new ResponseEntity<List<CoffeeShopDto>>(list, HttpStatus.OK);
 		} else {

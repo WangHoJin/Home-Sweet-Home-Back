@@ -18,7 +18,7 @@ public interface CoffeeShopService {
 		List<CoffeeShopDto> getCoffeeShopRadiusRank(CoffeeShopDto coffeeShopDto);
 		
 		// 커피집이 가장 많은 동네
-		List<CoffeeShopDto> getDongRank();
+		List<CoffeeShopDto> getDongRank(String gugun_name);
 		
 		// 해당 동 내 커피샵 순위
 		List<CoffeeShopDto> getCoffeeShopRank(String dong);

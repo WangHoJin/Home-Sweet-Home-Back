@@ -18,7 +18,7 @@ public interface StoreService {
 	List<StoreDto> getStoreRadiusRank(StoreDto storeDto);
 	
 	// 편의점이 가장 많은 동네
-	List<StoreDto> getDongRank();
+	List<StoreDto> getDongRank(String gugun_name);
 	
 	// 해당 동 내 편의점 순위
 	List<StoreDto> getStoreRank(String dong);

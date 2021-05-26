@@ -36,8 +36,8 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public List<StoreDto> getDongRank() {
-		return sqlSession.getMapper(StoreDao.class).getDongRank();
+	public List<StoreDto> getDongRank(String gugun_name) {
+		return sqlSession.getMapper(StoreDao.class).getDongRank(gugun_name);
 	}
 
 	@Override

@@ -23,7 +23,7 @@
 	</select>
 	
 	<select id="getCoffeeShopRadiusRank" parameterType="CoffeeShopDto" resultType="CoffeeShopDto">
-		select a.cname, min(distance) as distance, count(a.cname) as coffeeshopcnt
+		select *, min(distance) as distance, count(a.cname) as coffeeshopcnt
 		from (select cname,	(6371*acos(cos(radians(b.lat))*cos(radians(c.lat))*cos(radians(c.lng)-radians(b.lng))+sin(radians(b.lat))*sin(radians(c.lat)))) AS distance
 				from coffeeshop c, (select h.lng, h.lat
 									from houseinfo h
@@ -35,9 +35,10 @@
 		LIMIT 0,20;
 	</select>
 	
-	<select id="getDongRank" resultType="CoffeeShopDto">
+	<select id="getDongRank" parameterType="string" resultType="CoffeeShopDto">
 		select c.dong, count(dong) cnt
 		from coffeeshop c
+		where gugun_name like #{gugun_name}
 		group by c.dong
 		order by cnt desc
 		LIMIT 0,3;
